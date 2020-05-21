@@ -14,6 +14,7 @@ packages <- c(
     'shinystan', 
     'tidyverse', 
     'rmarkdown',
+    'rstanarm',
     'dplyr',
     'loo'
 )
