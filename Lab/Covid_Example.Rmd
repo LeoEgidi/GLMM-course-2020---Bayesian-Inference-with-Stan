@@ -1,0 +1,80 @@
+---
+title: "Covid-19: Bayesian hierarchical models"
+author: ""
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    toc: true
+    toc_depth: 2
+---
+```{r global_options, include=FALSE}
+knitr::opts_chunk$set(fig.align = 'center', warning=FALSE, message=FALSE, fig.asp=0.7, dev='png', global.par = TRUE, dev.args=list(pointsize=10), fig.path = 'figs/')
+library(MASS)
+```
+```{r setup, include=FALSE}
+library(knitr)
+local({
+  hook_plot = knit_hooks$get('plot')
+  knit_hooks$set(plot = function(x, options) {
+    paste0('\n\n----\n\n', hook_plot(x, options))
+  })
+})
+```
+
+# Problem: Hospitalised patients due to Covid-19
+
+Download the data for the Covid-19 spreading outbreak from the official website of [Protezione Civile](https://github.com/pcm-dpc/COVID-19), by using the following command:
+
+```{r covid, eval = FALSE}
+read.csv("https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-regioni/dpc-covid19-ita-regioni.csv")
+```
+
+The dataset contains the following variables:
+
+- ```data```: Date of notification
+- ```stato```: Country of reference
+- ```codice_regione```: Code of the Region (ISTAT 2019)
+- ```denominazione_regione```: Name of the Region
+- ```lat```: Latitude
+- ```long```: Longitude
+- ```ricoverati_con_sintomi```: Hospitalised patients with symptoms
+- ```terapia_intensiva```: Intensive Care
+- ```totale_ospedalizzati```: Total hospitalised patients
+- ```isolamento_domiciliare```: Home confinement
+- ```totale_positivi```: Total amount of current positive cases (Hospitalised patients + Home confinement)
+- ```variazione_totale_positivi```: New amount of current positive cases (totale_positivi current day - totale_positivi previous day)
+- ```nuovi_positivi```: New amount of current positive cases (totale_casi current day - totale_casi previous day)
+- ```dimessi_guariti```: Recovered
+- ```deceduti```: Death
+- ```totale_casi```: Total amount of positive cases
+- ```tamponi```: Tests performed
+- ```casi_testati```: Total number of people tested
+
+Consider your dataset until **1 April 2020**. After performing some explanatory analysis:
+
+1. Build a model for total hospitalized **OR** intensive care units.
+
+2. Evaluate the inclusion of the following covariates:
+
+  + time
+  + lockdown measures adopted by the Italian Government (see here for more details [https://en.wikipedia.org/wiki/2020_Italy_coronavirus_lockdown](https://en.wikipedia.org/wiki/2020_Italy_coronavirus_lockdown))
+  + number of medical swabs
+  + regional membership.
+
+3. Study the temporal trend of your selected response variable. 
+
+4. Check the fit of your final model by using posterior predictive checking tools and comment.
+
+5. [optional] Provide 3/4 days-forward *predictions*.
+
+6. [optional] Compare alternative models in terms of predictive information criteria and comment.
+
+
+
+
+
+
+
+
+
+

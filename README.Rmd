@@ -1,0 +1,34 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, echo = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-"
+)
+```
+
+# GLMM - Bayesian Inference with Stan
+
+## Course's program
+
+May 25th, Monday (2.30-5pm)
+
+   - Markov Chain Monte Carlo (intro)
+   - Hamiltonian Monte Carlo
+
+May 26th, Tuesday (10.30am-1pm)
+
+   - Introduction to Stan
+   - Lab: GLM regression (Cockroaches example)
+   
+May 27th, Wednesday (10.30am-1pm; 2.30pm-5pm)
+
+   - Hierarchical models
+   - Lab: Hierarchical regression (Cockroaches example)
+   - Model checking
+   - Lab: Regression for Covid-19 data
